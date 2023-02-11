@@ -4,7 +4,7 @@ To execute the tests just simply run PageTest.java class.
 
 I've created 3 simple tests, one validating the UI part and two others that send the request and validate the response code, city, validate the key of my account.
 
-The website had no ID for the WebElements so I had to use some "ugly" standards for mapping them.
+The website had no IDs for the WebElements so I had to use some "ugly" standards for mapping them.
 
 Tasks
 
