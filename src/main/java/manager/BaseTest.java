@@ -3,28 +3,27 @@ package manager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BaseTest {
+    protected static RemoteWebDriver driver;
 
-    protected static WebDriver driver;
-
-
-    static void setup() {
-        driver = WebDriverManager.chromedriver().create();
+    private static void initWebDriver() {
+       WebDriverManager.chromedriver().setup();
+       driver = new ChromeDriver();
     }
-
     @AfterEach
     void teardown() {
         if (null != driver) {
             driver.close();
             driver.quit();
+            driver = null;
         }
     }
-
-    public static WebDriver getDriver(){
+    public static RemoteWebDriver getDriver(){
         if(driver == null){
-            setup();
+            initWebDriver();
         }
         return driver;
     }
